@@ -38,6 +38,11 @@ class Volunteer
     @id = values.first["id"].to_i
   end
 
+  def update(params)
+    @name = params[:name]
+    DB.exec("UPDATE volunteers SET name = '#{@name}' WHERE id = #{@id}")
+  end
+
   def delete
     DB.exec("DELETE FROM volunteers WHERE id = #{@id}")
   end
