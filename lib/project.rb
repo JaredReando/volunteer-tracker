@@ -56,6 +56,10 @@ class Project
     @id = values.first["id"].to_i
   end
 
+  def delete
+    DB.exec("DELETE FROM projects WHERE id = #{@id}")
+  end
+
   def ==(other_instance)
     @title == other_instance.title
   end
