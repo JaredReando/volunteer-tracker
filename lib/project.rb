@@ -1,56 +1,43 @@
 require 'pry'
 
-class Volunteer
-  attr_reader(:name, :id, :project_id)
+class Project
+  attr_reader(:title, :id)
 
   def initialize(attributes)
-    @name = attributes[:name]
+    @title = attributes[:title]
     @id = attributes[:id]
-    @project_id = attributes[:project_id]
   end
 
   def self.all()
-    volunteers = []
-    volunteers_db_row = DB.exec("SELECT * FROM volunteers")
-    volunteers_db_row.each do |row|
-      name = row["name"]
+    projects = []
+    projects_db_row = DB.exec("SELECT * FROM projects")
+    projects_db_row.each do |row|
+      title = row["title"]
       id = row["id"].to_i
       project_id = row["projects_id"]
-      volunteer = Volunteer.new({:name => name, :id => id, :project_id => project_id})
-      volunteers.push(volunteer)
+      project = Project.new({:title => title, :id => id})
+      projects.push(project)
     end
-    volunteers
+    projects
   end
 
-  def self.find(volunteer_id)
-    found_volunteer = nil
-    all_volunteers = Volunteer.all
-    all_volunteers.each do |volunteer|
-      if volunteer.id == volunteer_id
-        found_volunteer = volunteer
+  def self.find(project_id)
+    found_project = nil
+    all_projects = Project.all
+    all_projects.each do |project|
+      if project.id == project_id
+        found_project = project
       end
     end
-    found_volunteer
+    found_project
   end
 
   def save
-    values = DB.exec("INSERT INTO volunteers (name, projects_id) VALUES ('#{@name}', '#{@project_id}') RETURNING id")
+    values = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id")
     @id = values.first["id"].to_i
   end
 
   def ==(other_instance)
-    @name == other_instance.name
+    @title == other_instance.title
   end
 end
-
-
-  # def tasks
-  #   list_tasks = []
-  #   tasks = DB.exec("SELECT * FROM tasks WHERE list_id = #{@id}")
-  #   tasks.each do |task|
-  #     description = task["description"]
-  #     list_id = task["list_id"]
-  #     list_tasks.push(Task.new({:description => description, :list_id => list_id}))
-  #   end
-  #   list_tasks
-  # end

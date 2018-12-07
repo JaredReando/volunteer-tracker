@@ -1,56 +1,57 @@
 require 'pry'
 
-class Doctor
-  attr_reader(:name, :specialty, :id)
+class Volunteer
+  attr_reader(:name, :id, :project_id)
 
   def initialize(attributes)
     @name = attributes[:name]
-    @specialty = attributes[:specialty]
     @id = attributes[:id]
+    @project_id = attributes[:project_id]
   end
 
   def self.all()
-    doctors = []
-    doctor_db_rows = DB.exec("SELECT * FROM doctors")
-    doctor_db_rows.each do |row|
+    volunteers = []
+    volunteers_db_row = DB.exec("SELECT * FROM volunteers")
+    volunteers_db_row.each do |row|
       name = row["name"]
-      specialty = row["specialty"]
       id = row["id"].to_i
-      doctor = Doctor.new({:name => name, :specialty => specialty, :id => id})
-      doctors.push(doctor)
+      project_id = row["projects_id"]
+      volunteer = Volunteer.new({:name => name, :id => id, :project_id => project_id})
+      volunteers.push(volunteer)
     end
-    doctors
+    volunteers
   end
 
-  def self.find(doctor_id)
-    found_doctor = nil
-    all_doctors = Doctor.all
-    all_doctors.each do |doctor|
-      if doctor.id == doctor_id
-        found_doctor = doctor
+  def self.find(volunteer_id)
+    found_volunteer = nil
+    all_volunteers = Volunteer.all
+    all_volunteers.each do |volunteer|
+      if volunteer.id == volunteer_id
+        found_volunteer = volunteer
       end
     end
-    found_doctor
+    found_volunteer
   end
 
   def save
-    values = DB.exec("INSERT INTO doctors (name, specialty) VALUES ('#{@name}', '#{@specialty}') RETURNING id")
+    values = DB.exec("INSERT INTO volunteers (name, projects_id) VALUES ('#{@name}', '#{@project_id}') RETURNING id")
     @id = values.first["id"].to_i
   end
 
-  def tasks
-    list_tasks = []
-    tasks = DB.exec("SELECT * FROM tasks WHERE list_id = #{@id}")
-    tasks.each do |task|
-      description = task["description"]
-      list_id = task["list_id"]
-      list_tasks.push(Task.new({:description => description, :list_id => list_id}))
-    end
-    list_tasks
-  end
 
   def ==(other_instance)
     @name == other_instance.name
-    @specialty == other_instance.specialty
   end
 end
+
+
+  # def tasks
+  #   list_tasks = []
+  #   tasks = DB.exec("SELECT * FROM tasks WHERE list_id = #{@id}")
+  #   tasks.each do |task|
+  #     description = task["description"]
+  #     list_id = task["list_id"]
+  #     list_tasks.push(Task.new({:description => description, :list_id => list_id}))
+  #   end
+  #   list_tasks
+  # end
