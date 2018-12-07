@@ -38,6 +38,10 @@ class Volunteer
     @id = values.first["id"].to_i
   end
 
+  def delete
+    DB.exec("DELETE FROM volunteers WHERE id = #{@id}")
+  end
+
 
   def ==(other_instance)
     @name == other_instance.name
