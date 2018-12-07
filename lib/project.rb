@@ -38,6 +38,10 @@ class Volunteer
     @id = values.first["id"].to_i
   end
 
+  def ==(other_instance)
+    @name == other_instance.name
+  end
+end
 
 
   # def tasks
@@ -50,8 +54,3 @@ class Volunteer
   #   end
   #   list_tasks
   # end
-
-  def ==(other_instance)
-    @name == other_instance.name
-  end
-end
