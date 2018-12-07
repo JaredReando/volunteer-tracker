@@ -13,6 +13,13 @@
 <a href="/projects/<%= @project.id %>/edit">Edit Project</a>
 <% end %>
 
+<br><br>
+<h3>Add Volunteers:</h3>
+<form action="/volunteers/add" method="post">
+<input name="project_id" type="hidden" value="<%= @project.id %>">
+  Name:<input type="text" name="name">
+  <button type="submit" name="button">Add Volunteer</button>
+</form>
 <% if @volunteers.any? %>
   <br><br>
   <h3>Volunteer Pool:</h3>
@@ -20,6 +27,6 @@
     <% @volunteers.each do |volunteer| %>
       <li><a href="/volunteers/<%= volunteer.id %>/edit"><%= volunteer.name %></a></li>
     <% end %>
-<% else %>
+  <% else %>
   <h2>No volunteers yet. Get recruiting!</h2>
-<% end %>
+  <% end %>

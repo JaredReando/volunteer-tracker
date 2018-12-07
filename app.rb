@@ -30,9 +30,10 @@ end
 
 post("/volunteers/add") do
 name = params[:name]
-volunteer = Volunteer.new({name: name, project_id: 0})
+project_id = params[:project_id].to_i
+volunteer = Volunteer.new({name: name, project_id: project_id})
 volunteer.save
-redirect "/"
+redirect "/projects/#{project_id}"
 end
 
 patch("/volunteers/:id/edit") do
