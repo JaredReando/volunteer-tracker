@@ -30,8 +30,8 @@ end
 
 post("/volunteers/add") do
 name = params[:name]
-project_id = params[:project_id].to_i
-volunteer = Volunteer.new({name: name, project_id: project_id})
+@project_id = params[:project_id].to_i
+volunteer = Volunteer.new({name: name, project_id: @project_id})
 volunteer.save
 redirect "/projects/#{project_id}"
 end
@@ -41,6 +41,7 @@ volunteer_id = params[:id].to_i
 new_name = params[:name]
 @volunteer = Volunteer.find(volunteer_id)
 @volunteer.update({name: new_name})
+@project_id = @volunteer.project_id
 (erb :volunteer_info)
 end
 
