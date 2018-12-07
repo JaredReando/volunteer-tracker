@@ -9,7 +9,22 @@ DB = PG.connect({:dbname => "volunteer_tracker"})
 
 
 get("/") do
+@projects = Project.all
 (erb :index)
+end
+
+post("/") do
+  title = params["title"]
+  project = Project.new({title: title, id: nil})
+  project.save
+  redirect "/"
+end
+
+get("/project_info/:id") do
+  project_id = params[:id].to_i
+  @project = Project.find(project_id)
+  (erb :project_info)
+
 end
 
 # post("/doctor") do
