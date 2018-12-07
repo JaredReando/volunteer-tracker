@@ -1,1 +1,14 @@
+<% if @edit==true%>
+<h1>Edit <%= @project.title %></h1>
+<form class="" action="/projects/<%= @project.id %>" method="post">
+  Title: <input type="text" name="title" value="<%= @project.title %>">
+  <button type="submit">Update Project</button>
+</form>
+<form action="/projects/<%= @project.id %>/edit" method="post">
+  <input name="_method" type="hidden" value="delete">
+<button type="submit">Delete Project</button>
+</form>
+<% else %>
 <h1><%= @project.title %></h1>
+<a href="/projects/<%= @project.id %>/edit">Edit Project</a>
+<% end %>
