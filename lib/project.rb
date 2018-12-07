@@ -32,6 +32,19 @@ class Project
     found_project
   end
 
+  def volunteers
+    project_volunteers = []
+    volunteers_db_search = DB.exec("SELECT * FROM volunteers WHERE projects_id = #{@id}")
+    volunteers_db_search.each do |volunteer|
+      name = volunteer["name"]
+      id = volunteer["id"]
+      project_id = volunteer["projects_id"]
+      volunteer = Volunteer.new({name: name, id: id, project_id: project_id})
+      project_volunteers.push(volunteer)
+    end
+    project_volunteers
+  end
+
   def save
     values = DB.exec("INSERT INTO projects (title) VALUES ('#{@title}') RETURNING id")
     @id = values.first["id"].to_i
