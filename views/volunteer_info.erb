@@ -1,5 +1,6 @@
-<h1><%= @volunteer.name %></h1>
 <a href="/projects/<%= @project_id %>"><< Back</a>
+<h1><%= @volunteer.name %></h1>
+
 <form action="/volunteers/<%= @volunteer.id %>/edit" method="post">
   <input name="_method" type="hidden" value="patch">
   Name:<input type="text" name="name" pattern="^[a-zA-Z\s]*$" title="Input only alllows letters and spaces.">

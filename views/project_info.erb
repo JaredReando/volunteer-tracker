@@ -1,32 +1,32 @@
 
 <% if @edit==true%>
-<a href="/projects/<%= @project.id %>"><< Back</a>
-<h1>Edit <%= @project.title %></h1>
-<form class="" action="/projects/<%= @project.id %>" method="post">
-  Title: <input type="text" name="title" value="<%= @project.title %>" pattern="^[a-zA-Z\s]*$" title="Input only alllows letters and spaces.">
-  <button type="submit">Update Project</button>
-</form>
-<form action="/projects/<%= @project.id %>/edit" method="post">
-  <input name="_method" type="hidden" value="delete">
-<button type="submit">Delete Project</button>
-</form>
+  <a href="/projects/<%= @project.id %>"><< Back</a>
+  <h1>Edit <%= @project.title %></h1>
+  <form class="" action="/projects/<%= @project.id %>" method="post">
+    Title: <input type="text" name="title" value="<%= @project.title %>" pattern="^[a-zA-Z\s]*$" title="Input only alllows letters and spaces.">
+    <button type="submit">Update Project</button>
+  </form>
+  <form action="/projects/<%= @project.id %>/edit" method="post">
+    <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete Project</button>
+  </form>
 <% else %>
-<a href="/"><< Back</a>
-<h1><%= @project.title %></h1>
-<a href="/projects/<%= @project.id %>/edit">Edit Project</a>
-<br><br>
-<h3>Add Volunteers:</h3>
-<form action="/volunteers/add" method="post">
-  <input name="project_id" type="hidden" value="<%= @project.id %>">
-  Name:<input type="text" name="name" pattern="^[a-zA-Z\s]*$" title="Input only alllows letters and spaces.">
-  <button type="submit" name="button">Add Volunteer</button>
-</form>
-<% if @volunteers.any? %>
+  <a href="/"><< Back</a>
+  <h1><%= @project.title %></h1>
+  <a href="/projects/<%= @project.id %>/edit">Edit Project</a>
   <br><br>
-  <h3>Volunteer Pool:</h3>
-    <ul>
-    <% @volunteers.each do |volunteer| %>
-      <li><a href="/volunteers/<%= volunteer.id %>/edit"><%= volunteer.name %></a></li>
+  <h3>Add Volunteers:</h3>
+  <form action="/volunteers/add" method="post">
+    <input name="project_id" type="hidden" value="<%= @project.id %>">
+    Name:<input type="text" name="name" pattern="^[a-zA-Z\s]*$" title="Input only alllows letters and spaces.">
+    <button type="submit" name="button">Add Volunteer</button>
+  </form>
+  <% if @project_volunteers.any? %>
+    <br><br>
+    <h3>Volunteer Pool:</h3>
+      <ul>
+      <% @project_volunteers.each do |volunteer| %>
+        <li><a href="/volunteers/<%= volunteer.id %>/edit"><%= volunteer.name %></a></li>
     <% end %>
   <% else %>
   <h2>No volunteers yet. Get recruiting!</h2>
