@@ -6,9 +6,18 @@
 
 ## Description
 
-_Easily keep track of multiple projects and volunteers_
+Easily keep track of multiple projects and volunteers using this delightfully simple web application. It really does it all:
 
-View this site hosted _[here](https://glacial-ravine-14472.herokuapp.com/)_ on Heroku.
+  - Create projects
+  - Edit project names
+  - Add volunteers to existing projects
+  - Edit volunteer names
+  - Delete volunteers and projects for various reasons:
+    - Project completed
+    - Cancellations
+    - Crippling shame/failure
+
+View this site hosted [HERE](https://glacial-ravine-14472.herokuapp.com/) on Heroku.
 
 ## Setup/Installation Requirements
 
@@ -22,27 +31,29 @@ _Questions or feedback: jaredreando@gmail.com_
 
 ## Technologies
 
-- This project was created with Ruby 2.5.3. It is deployed to Heroku using the Sinatra web framework.
+- This project was created with Ruby 2.5.3.
+- It is deployed to Heroku using the Sinatra web framework.
+- See project GEMFILE for complete list of gems
 
 ## Objectives
 
 - [x] Objects are created from a custom class with custom methods.
 
-- [] Tests are 100% passing. You may not significantly alter the included tests but you may add additional tests as necessary.
+- [x] Tests are 100% passing. You may not significantly alter the included tests but you may add additional tests as necessary.
 
-- [] Database is set up correctly.
+- [x] Database is set up correctly.
 
-- [] Correct set up of a one-to-many relationship.
+- [x] Correct set up of a one-to-many relationship.
 
-- [] Sinatra has required CRUD functionality.
+- [x] Sinatra has required CRUD functionality.
 
-- [] Project has strong commit history history.
+- [x] Project has strong commit history history.
 
-- [] Project has detailed README with all necessary setup instructions and a description of the project.
+- [x] Project has detailed README with all necessary setup instructions and a description of the project.
 
-- [] Required functionality was in place by the Friday deadline.
+- [x] Required functionality was in place by the Friday deadline.
 
-- [] Student can demonstrate understanding of Ruby concepts if asked.
+- [x] Student can demonstrate understanding of Ruby concepts if asked.
 
 
 ### License
