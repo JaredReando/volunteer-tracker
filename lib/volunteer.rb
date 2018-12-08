@@ -52,15 +52,3 @@ class Volunteer
     @name == other_instance.name
   end
 end
-
-
-  # def tasks
-  #   list_tasks = []
-  #   tasks = DB.exec("SELECT * FROM tasks WHERE list_id = #{@id}")
-  #   tasks.each do |task|
-  #     description = task["description"]
-  #     list_id = task["list_id"]
-  #     list_tasks.push(Task.new({:description => description, :list_id => list_id}))
-  #   end
-  #   list_tasks
-  # end
