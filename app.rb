@@ -20,9 +20,17 @@ post("/") do
   redirect "/"
 end
 
-post("/volunteers/add") do
+post("/volunteers/add_from_index") do
   name = params[:name]
   @project_id = params[:project_id].to_i
+  volunteer = Volunteer.new({name: name, project_id: @project_id})
+  volunteer.save
+  redirect "/"
+end
+
+post("/volunteers/add") do
+  name = params[:name]
+  @project_id = params[:project].to_i
   volunteer = Volunteer.new({name: name, project_id: @project_id})
   volunteer.save
   redirect "/projects/#{@project_id}"
