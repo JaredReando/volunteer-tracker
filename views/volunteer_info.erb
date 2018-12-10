@@ -1,5 +1,13 @@
 <a href="/projects/<%= @project_id %>"><< Back</a>
-<h1><%= @volunteer.name %></h1>
+
+<div class="jumbotron text-center">
+  <h3>[Edit]</h3>
+  <h1><%= @volunteer.name %></h1>
+  <form action="/volunteers/<%= @volunteer.id %>/edit" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button type="submit" class="btn btn-danger">Delete Volunteer</button>
+  </form>
+</div>
 
 <form action="/volunteers/<%= @volunteer.id %>/edit" method="post">
   <input name="_method" type="hidden" value="patch">

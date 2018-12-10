@@ -31,6 +31,11 @@ View this site hosted [HERE](https://glacial-ravine-14472.herokuapp.com/) on Her
   * $ createdb -T volunteer_tracker volunteer_tracker_test
 
 Mac Ruby setup:
+  * Install homebrew
+  * Install postgres ($ brew install postgres)
+  * To start postgres server, just run $ postgres
+    * For editing, use 3 windows in Terminal: Terminal, postgres, and server window. Use Cmd+T on a Mac to open new tabs in Terminal
+  * Visit the Ruby site for setup help: [www.ruby-lang.org](https://www.ruby-lang.org/en/)
   * gem install postgres
 
 ## Support and contact details

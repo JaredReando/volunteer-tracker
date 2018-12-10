@@ -44,6 +44,14 @@ patch("/volunteers/:id/edit") do
   redirect "/projects/#{project_id}"
 end
 
+delete("/volunteers/:id/edit") do
+  volunteer_id = params[:id].to_i
+  volunteer = Volunteer.find(volunteer_id)
+  project_id = volunteer.project_id
+  volunteer.delete
+  redirect "/projects/#{project_id}"
+end
+
 get("/projects/:id") do
   @edit = false
   project_id = params[:id].to_i

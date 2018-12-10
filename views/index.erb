@@ -1,18 +1,57 @@
-<h1>Volunteer Tracker</h1>
 
-<form action="/" method="post">
-  Enter Title:<input type="text" pattern="^[a-zA-Z\s]*$" title="Input only alllows letters and spaces." required="true" name="title">
-  <button type="submit" class="btn-success">Create Project</button>
-</form>
 
-<% if @projects.any? %>
-  <br><br>
-  <h3>Existing Projects:</h3>
-  <ul>
-  <% @projects.each do |project| %>
-    <li><a href="/projects/<%= project.id %>"><%= project.title %></a></li>
-  <% end %>
-  </ul>
-<% else %>
-  <h3>No projects yet.</h3>
-<% end %>
+<div class="row">
+  <div class="col-sm-12 jumbotron text-center">
+    <h1>Volunteer Tracker</h1>
+    <p>Lending hands to the helpless and help to the handless.</p>
+  </div>
+</div>
+
+
+  <div class="row">
+    <div class="col-sm-6 well">
+      <h2 class="text-center">Add a new project</h2>
+      <form action="/" method="post" class="text-center">
+        <label>Project Title:</label>
+        <input type="text" pattern="^[a-zA-Z\s]*$" title="Input only alllows letters and spaces." required="true" name="title">
+        <button type="submit" class="btn-success">Create Project</button>
+      </form>
+      <% if @projects.any? %>
+      <br><br>
+      <h3>Existing Projects:</h3>
+      <ul>
+        <% @projects.each do |project| %>
+        <li><a href="/projects/<%= project.id %>"><%= project.title %></a></li>
+        <% end %>
+      </ul>
+      <% else %>
+      <h3>No projects yet.</h3>
+      <% end %>
+
+    </div>
+    <div class="col-sm-5 col-sm-offset-1 well">
+      <h2 class="text-center">Add a volunteer</h2>
+      <form action="/volunteers/add" method="post">
+      <div>
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Volunteer Name" pattern="^[a-zA-Z\s]*$" title="Input only alllows letters and spaces." required="true">
+      </div>
+      <br>
+      <div>
+        <label>Existing Projects</label>
+        <select class="form-control" STYLE="width: 200px">
+          <% if @projects.any? %>
+          <% @projects.each do |project| %>
+          <option value="<%= project.id %>"><%= project.title %></option>
+          <% end %>
+          <% else %>
+          <option>NO PROJECTS</option>
+          <% end %>
+        </select>
+      </div>
+      <button class="btn-success" type="submit">Add Volunteer</button>
+    </form>
+      <p>Lorem ipsum dolor..</p>
+      <p>Ut enim ad..</p>
+    </div>
+  </div>
