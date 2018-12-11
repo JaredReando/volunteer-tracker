@@ -1,4 +1,3 @@
-View this site hosted [HERE](https://glacial-ravine-14472.herokuapp.com/) on Heroku.
 # Volunteer Tracker
 
 #### _Database app for tracking projects and volunteers._
@@ -87,9 +86,8 @@ _Questions or feedback: jaredreando@gmail.com_
 
 ## Technologies
 
-- Created with Ruby 2.5.3.
-- Deployed to Heroku using the Sinatra web framework.
-- See project GEMFILE for complete list of gems
+- Created with Ruby 2.5.3
+- See project GEMFILE for complete list of gems and versions
 
 ## Objectives
 
